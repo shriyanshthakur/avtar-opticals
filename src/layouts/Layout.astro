@@ -1,0 +1,274 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Avtar Opticals | Trusted Wholesaler & Retailer in Bhilai", 
+  description = "Find a wide selection of wholesale frames and contact lenses like Bausch + Lomb at Avtar Opticals in Bhilai. Friendly service and stylish, practical eyewear providing full coverage."
+} = Astro.props;
+
+// Local Business JSON-LD Schema (Specifically "Optician" type)
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Optician",
+  "name": "Avtar Opticals",
+  "image": "https://avtaropticals.com/assets/images/store-interior.png",
+  "@id": "https://avtaropticals.com/#store",
+  "url": "https://avtaropticals.com",
+  "telephone": "+917987170637",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "A Market, Block 6, State Bank Colony, Sector 6",
+    "addressLocality": "Bhilai",
+    "addressRegion": "Chhattisgarh",
+    "postalCode": "490006",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 21.1938,
+    "longitude": 81.3509
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "21:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Sunday"
+      ],
+      "opens": "08:00",
+      "closes": "09:30"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "3.8",
+    "reviewCount": "10",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://avtaropticals.com" />
+    <meta property="og:image" content="https://avtaropticals.com/assets/images/store-interior.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Local SEO Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-brand-light text-brand-dark antialiased selection:bg-brand-gold selection:text-brand-dark">
+    
+    <!-- Navigation (Sticky Glassmorphic) -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        <!-- Brand Logo & Name -->
+        <a href="#" class="flex items-center gap-3 group" id="nav-logo">
+          <div class="relative w-10 h-10 flex items-center justify-center bg-brand-dark text-brand-light rounded-full border border-brand-gold/30 group-hover:border-brand-gold transition-colors duration-300">
+            <span class="font-display font-bold text-lg text-brand-gold">A</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-lg tracking-wide text-brand-dark group-hover:text-brand-gold-dark transition-colors duration-200 uppercase">Avtar Opticals</span>
+            <span class="text-[9px] font-accent font-semibold tracking-[0.25em] text-brand-gold uppercase -mt-1">Wholesale & Retail</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 font-accent font-semibold text-xs tracking-wider uppercase text-brand-dark/80">
+          <a href="#" class="hover:text-brand-gold transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all hover:after:w-full">Home</a>
+          <a href="#services" class="hover:text-brand-gold transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all hover:after:w-full">Services</a>
+          <a href="#wholesale-inquiries" class="hover:text-brand-gold transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all hover:after:w-full">Wholesale Inquiries</a>
+          <a href="#location" class="hover:text-brand-gold transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all hover:after:w-full">Contact</a>
+        </nav>
+
+        <!-- CTA & Rating Badge -->
+        <div class="flex items-center gap-3">
+          <div class="hidden lg:flex items-center gap-1.5 bg-brand-cream border border-brand-gold/15 px-3 py-1.5 rounded-full text-xs font-accent font-bold">
+            <span class="text-amber-500">★</span>
+            <span class="text-brand-dark">3.8/5</span>
+            <span class="text-brand-gray text-[10px] font-medium">(Google Rating)</span>
+          </div>
+          
+          <a 
+            href="tel:07987170637" 
+            class="hidden sm:inline-flex px-4 py-2 bg-brand-cream hover:bg-brand-sand border border-brand-gold/40 text-brand-dark text-xs font-accent font-bold tracking-wider uppercase rounded-full transition-all duration-300"
+          >
+            Call Now
+          </a>
+          
+          <a 
+            href="#wholesale-inquiries" 
+            id="header-cta"
+            class="px-5 py-2.5 bg-brand-dark hover:bg-brand-dark-card text-brand-light text-xs font-accent font-bold tracking-wider uppercase rounded-full border border-brand-dark transition-all duration-300 shadow-md shadow-brand-dark/10 hover:shadow-brand-gold/25"
+          >
+            Inquire Now
+          </a>
+
+          <!-- Mobile Menu Button (Hamburger) -->
+          <button 
+            id="menu-btn" 
+            class="md:hidden p-2 text-brand-dark hover:text-brand-gold focus:outline-none z-50 relative"
+            aria-label="Toggle Menu"
+          >
+            <svg id="hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Drawer (Overlay) -->
+    <div 
+      id="mobile-menu" 
+      class="fixed inset-0 z-40 bg-brand-light/98 backdrop-blur-xl translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-28 px-8 gap-6 text-lg font-accent font-bold tracking-wider uppercase text-brand-dark/80"
+    >
+      <a href="#" class="mobile-link hover:text-brand-gold py-2 border-b border-brand-gold/10">Home</a>
+      <a href="#services" class="mobile-link hover:text-brand-gold py-2 border-b border-brand-gold/10">Services</a>
+      <a href="#wholesale-inquiries" class="mobile-link hover:text-brand-gold py-2 border-b border-brand-gold/10">Wholesale Inquiries</a>
+      <a href="#location" class="mobile-link hover:text-brand-gold py-2 border-b border-brand-gold/10">Location & Hours</a>
+      <div class="mt-8 flex flex-col gap-4">
+        <div class="flex items-center gap-1.5 bg-brand-cream border border-brand-gold/15 px-4 py-2 w-fit rounded-full text-xs font-accent font-bold">
+          <span class="text-amber-500">★</span>
+          <span class="text-brand-dark">3.8/5 Rating</span>
+        </div>
+        <div class="flex gap-2">
+          <a 
+            href="tel:07987170637" 
+            class="mobile-link flex-1 py-3 bg-brand-cream hover:bg-brand-sand text-brand-dark text-sm font-accent font-bold tracking-wider uppercase border border-brand-gold/30 rounded-full text-center"
+          >
+            Call Now
+          </a>
+          <a 
+            href="#wholesale-inquiries" 
+            class="mobile-link flex-1 py-3 bg-brand-dark hover:bg-brand-dark-card text-brand-light text-sm font-accent font-bold tracking-wider uppercase rounded-full text-center"
+          >
+            Inquire Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Slot -->
+    <main class="pt-20">
+      <slot />
+    </main>
+
+    <!-- Floating WhatsApp Widget -->
+    <a 
+      href="https://wa.me/917987170637?text=Hello%20Avtar%20Opticals%2C%20I'm%20interested%20in%20eyewear%20or%20wholesale%20frames."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25d366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.588 1.45 5.352 1.451 5.485 0 9.948-4.468 9.95-9.95.002-2.657-1.02-5.155-2.879-7.018-1.859-1.862-4.361-2.885-7.018-2.886-5.49 0-9.952 4.467-9.955 9.951-.001 1.84.49 3.633 1.42 5.201l-1.02 3.725 3.824-.997zm11.366-5.412c-.287-.144-1.702-.84-1.965-.936-.264-.096-.456-.144-.648.144-.192.288-.744.936-.912 1.128-.168.192-.336.216-.624.072-2.828-1.415-4.664-3.14-5.502-4.577-.223-.382-.024-.588.169-.781.172-.175.383-.448.575-.673.192-.224.256-.384.384-.64.128-.256.064-.48-.032-.672-.096-.192-.648-1.563-.888-2.14-.233-.561-.471-.485-.648-.495-.168-.008-.36-.01-.552-.01-.192 0-.504.072-.768.36-.264.288-1.008.984-1.008 2.4s1.032 2.784 1.176 2.976c.144.192 2.032 3.102 4.921 4.347.687.296 1.224.473 1.64.605.69.22 1.319.19 1.816.115.553-.083 1.702-.696 1.942-1.37.24-.672.24-1.248.168-1.37-.072-.12-.264-.216-.552-.36z"/>
+      </svg>
+    </a>
+
+    <!-- Navigation JS Drawer Controller -->
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+      const header = document.getElementById('main-header');
+
+      // Sticky header background padding adjust
+      window.addEventListener('scroll', () => {
+        if (!header) return;
+        if (window.scrollY > 20) {
+          header.classList.remove('h-20');
+          header.classList.add('h-16', 'shadow-sm', 'bg-brand-light/95');
+        } else {
+          header.classList.remove('h-16', 'shadow-sm', 'bg-brand-light/95');
+          header.classList.add('h-20');
+        }
+      });
+
+      function toggleMenu() {
+        if (!mobileMenu || !hamburgerIcon || !closeIcon) return;
+        const isOpen = mobileMenu.classList.contains('translate-x-0');
+        if (isOpen) {
+          mobileMenu.classList.remove('translate-x-0');
+          mobileMenu.classList.add('translate-x-full');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        } else {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenu.classList.add('translate-x-0');
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      if (menuBtn && mobileMenu && hamburgerIcon && closeIcon) {
+        menuBtn.addEventListener('click', toggleMenu);
+        
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

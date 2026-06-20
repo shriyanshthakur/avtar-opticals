@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-accent: 'Outfit', system-ui, sans-serif;
+
+  /* Brand Palette - Trustworthy Navy Blue & Warm Amber Hybrid */
+  --color-brand-gold: #c29b62;
+  --color-brand-gold-dark: #9e7943;
+  --color-brand-gold-light: #e4cca6;
+  
+  --color-brand-dark: #0a192f;
+  --color-brand-dark-card: #112240;
+  --color-brand-dark-card-hover: #1d3557;
+  --color-brand-light: #f8fafc;
+  --color-brand-cream: #f0f4f8;
+  --color-brand-sand: #e2e8f0;
+  
+  --color-brand-gray: #64748b;
+  --color-brand-gray-light: #cbd5e1;
+  --color-brand-gray-dark: #334155;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-scale-in: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-subtle: pulse-subtle 3s infinite ease-in-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.7; }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-brand-light);
+  color: var(--color-brand-dark);
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-gray-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold);
+}
+
+/* Premium Visual Utility Classes */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-brand-gold-dark) 0%, var(--color-brand-gold) 50%, var(--color-brand-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-nav {
+  background: rgba(251, 251, 249, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+}
+
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-brand-gold);
+  box-shadow: 0 20px 45px -15px rgba(197, 168, 128, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.outline-text {
+  -webkit-text-stroke: 1px rgba(18, 18, 18, 0.15);
+  color: transparent;
+}
+
+.outline-text-hover:hover {
+  -webkit-text-stroke-color: var(--color-brand-gold);
+  transition: all 0.3s ease;
+}
